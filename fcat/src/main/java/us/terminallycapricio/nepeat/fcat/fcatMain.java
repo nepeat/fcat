@@ -28,7 +28,6 @@ public final class fcatMain extends JavaPlugin implements Listener {
 
     	// Config
     	loadConfig();
-    	getServer().broadcastMessage(ChatColor.RED + "[fcat:WARNING] BUTTFUCKERY PLUGIN ACTIVE.");
     }
  
     public void loadConfig() {
