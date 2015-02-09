@@ -57,7 +57,10 @@ public class EventListener implements Listener {
     	
     	// Explosions
     	for (Block block : blocks) {
-    		if (block.getType() == explodematerial) explode(block, false);
+    		if (block.getType() == explodematerial) {
+    			event.setYield(0.0f); // Let's not drop any blocks to reduce lag.
+    			explode(block, false);
+    		}
     	}
     }
 }
