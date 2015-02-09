@@ -37,6 +37,7 @@ public final class fcatMain extends JavaPlugin implements Listener {
     public void onDisable() {
         // TODO Insert logic to be performed when the plugin is disabled
     	getLogger().info("onDisable has been invoked!");
+    	this.saveConfig();
     }
 
 }
