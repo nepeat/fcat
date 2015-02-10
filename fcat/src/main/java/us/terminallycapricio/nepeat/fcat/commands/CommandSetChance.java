@@ -9,7 +9,6 @@ import us.terminallycapricio.nepeat.fcat.fcatMain;
 public class CommandSetChance extends CommandBase {
 
 	public CommandSetChance() {
-		this.name = "setchance";
 		this.desc = "Sets sand explosion percentage.";
 	}
 	

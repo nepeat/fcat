@@ -13,7 +13,6 @@ import org.bukkit.entity.TNTPrimed;
 public class CommandPurgeTNT extends CommandBase {
 
 	public CommandPurgeTNT() {
-		this.name = "killtnt";
 		this.desc = "Removes all TNT from the world.";
 	}
 	

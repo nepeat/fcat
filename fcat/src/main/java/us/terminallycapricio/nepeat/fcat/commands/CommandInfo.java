@@ -8,7 +8,6 @@ import us.terminallycapricio.nepeat.fcat.fcatMain;
 public class CommandInfo extends CommandBase {
 
 	public CommandInfo() {
-		this.name = "info";
 		this.desc = "Gets plugin config info.";
 	}
 	

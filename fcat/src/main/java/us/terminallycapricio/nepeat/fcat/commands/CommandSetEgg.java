@@ -12,7 +12,6 @@ import us.terminallycapricio.nepeat.fcat.fcatMain;
 public class CommandSetEgg extends CommandBase {
 
 	public CommandSetEgg() {
-		this.name = "setegg";
 		this.desc = "Sets egg spawn type.";
 	}
 	
