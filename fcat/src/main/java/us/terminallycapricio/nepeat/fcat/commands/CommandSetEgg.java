@@ -18,7 +18,12 @@ public class CommandSetEgg extends CommandBase {
 	private static EntityType[] bannedentities = new EntityType[] {
 		EntityType.ENDER_DRAGON,
 		EntityType.ENDER_CRYSTAL,
-		EntityType.ENDER_PEARL
+		EntityType.ENDER_PEARL,
+		EntityType.ITEM_FRAME,
+		EntityType.ENDER_SIGNAL,
+		EntityType.LEASH_HITCH,
+		EntityType.ARMOR_STAND,
+		EntityType.COMPLEX_PART
 	};
 	
 	@Override
