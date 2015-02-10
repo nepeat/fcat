@@ -5,7 +5,6 @@ import java.util.Random;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.entity.CreatureType;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TNTPrimed;
