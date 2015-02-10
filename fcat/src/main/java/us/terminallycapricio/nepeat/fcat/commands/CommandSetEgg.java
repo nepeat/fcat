@@ -1,6 +1,8 @@
 package us.terminallycapricio.nepeat.fcat.commands;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -69,4 +71,22 @@ public class CommandSetEgg extends CommandBase {
 		return;
     }
 	
+	@Override
+	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+		LinkedList<String> output = new LinkedList<String>();
+		String lastarg = "";
+		
+    	if (args.length > 0) {
+    		lastarg = args[args.length - 1].toLowerCase();
+    	}
+		
+		for (EntityType et : EntityType.values()){
+			if (et.isSpawnable() && !(Arrays.asList(bannedentities).contains(et))) {
+				if (et.toString().toLowerCase().startsWith(lastarg)) output.add(et.toString());
+			}
+		}
+		
+		return output;
+	}
+    
 }

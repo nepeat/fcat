@@ -1,5 +1,7 @@
 package us.terminallycapricio.nepeat.fcat.commands;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map.Entry;
 
 import org.bukkit.ChatColor;
@@ -20,4 +22,10 @@ public class CommandHelp extends CommandBase {
 			sender.sendMessage(ChatColor.GREEN + "/fcat " + ChatColor.DARK_GREEN  + x.getKey() + ChatColor.WHITE + " - "+ x.getValue().desc);
 		}
 	}
+
+	@Override
+	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+		return new LinkedList<String>();
+	}
+
 }

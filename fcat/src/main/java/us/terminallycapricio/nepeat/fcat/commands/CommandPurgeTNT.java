@@ -1,5 +1,6 @@
 package us.terminallycapricio.nepeat.fcat.commands;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
@@ -36,6 +37,11 @@ public class CommandPurgeTNT extends CommandBase {
 		Bukkit.getServer().broadcastMessage(ChatColor.RED + String.format("Purged %s TNT!", purged));
 		
 		return;		
+	}
+	
+	@Override
+	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+		return new LinkedList<String>();
 	}
 	
 }

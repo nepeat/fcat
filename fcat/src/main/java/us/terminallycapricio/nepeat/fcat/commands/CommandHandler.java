@@ -57,11 +57,19 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
     	String lastarg = "";
 
     	if (args.length > 0) {
-    		lastarg = args[args.length - 1];
+    		lastarg = args[args.length - 1].toLowerCase();
     	}
     	
-    	for (String cmd : commands.keySet()) {
-    		output.add(cmd);
+    	// No args. Get all commands from the commands map.
+    	if (args.length == 1) {
+    		for (String cmd : commands.keySet()) {
+    			if (cmd.toLowerCase().startsWith(lastarg)) output.add(cmd);
+    		}
+    	} else { 
+    		// Getting commands from the command classes
+    		if (commands.containsKey(args[0])) {
+    			return getExecutor(args[0]).onTabComplete(sender, command, alias, Arrays.copyOfRange(args, 1, args.length));
+    		}
     	}
     	
     	return output;

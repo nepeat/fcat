@@ -1,5 +1,8 @@
 package us.terminallycapricio.nepeat.fcat.commands;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -26,6 +29,11 @@ public class CommandSetChance extends CommandBase {
 		sender.sendMessage(ChatColor.GREEN + String.format("[fcat] Set to %s!", floatchance));
 		return;
 		
+	}
+	
+	@Override
+	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+		return new LinkedList<String>();
 	}
 
 }
