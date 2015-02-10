@@ -2,15 +2,18 @@ package us.terminallycapricio.nepeat.fcat.commands;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 
 import us.terminallycapricio.nepeat.fcat.fcatMain;
 
-public class CommandHandler implements CommandExecutor {
+public class CommandHandler implements CommandExecutor, TabCompleter {
 
 	private final fcatMain plugin;
 	static HashMap<String, CommandBase> commands = new HashMap<String, CommandBase>();
@@ -46,7 +49,23 @@ public class CommandHandler implements CommandExecutor {
 			sender.sendMessage(ChatColor.RED + "[fcat] Do /fcat help to see valid commands.");
 		}
     	
-    	return false;
+    	return true;
+    }
+    
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+    	LinkedList<String> output = new LinkedList<String>();
+    	String lastarg = "";
+
+    	if (args.length > 0) {
+    		lastarg = args[args.length - 1];
+    	}
+    	
+    	for (String cmd : commands.keySet()) {
+    		output.add(cmd);
+    	}
+    	
+    	return output;
+    	
     }
     
 }
