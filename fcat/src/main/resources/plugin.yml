@@ -2,16 +2,6 @@ name: fcat
 main: us.terminallycapricio.nepeat.fcat.fcatMain
 version: 4.13
 commands:
-   killtnt:
-      description: Kills all TNT.
-      usage: /killtnt
-      permission: testplugin.admin
-      permission-message: You don't have testplugin.admin
-   getchance:
-      description: Gets sand TNT chance.
-      usage: /getchance
-   setchance:
-      description: Sets sand TNT chance.
-      usage: /setchance <chance>
-      permission: testplugin.admin
-      permission-message: You don't have testplugin.admin
+   fcat:
+      description: fcat central command.
+      usage: /fcat

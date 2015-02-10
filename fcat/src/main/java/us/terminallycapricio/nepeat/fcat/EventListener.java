@@ -5,12 +5,15 @@ import java.util.Random;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.entity.CreatureType;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
+import org.bukkit.event.player.PlayerEggThrowEvent;
 
 public class EventListener implements Listener {
 	
@@ -62,5 +65,16 @@ public class EventListener implements Listener {
     			explode(block, false);
     		}
     	}
+    }
+    
+    @EventHandler
+    public void onEgg(PlayerEggThrowEvent event) {
+    	
+    	EntityType entity = EntityType.valueOf(this.plugin.getConfig().getString("eggtype"));
+    	
+    	event.setHatching(true);
+    	event.setHatchingType(entity);
+ 
+    	event.setNumHatches((byte) 5);
     }
 }
