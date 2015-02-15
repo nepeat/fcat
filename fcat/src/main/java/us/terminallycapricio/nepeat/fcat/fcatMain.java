@@ -1,20 +1,14 @@
 package us.terminallycapricio.nepeat.fcat;
 
 import org.bukkit.event.Listener;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import us.terminallycapricio.nepeat.fcat.commands.CommandHandler;
+import us.terminallycapricio.nepeat.fcat.events.EventListener;
 
 public final class fcatMain extends JavaPlugin implements Listener {
 	
 	public static fcatMain plugin;
-	
-	public static void registerEvents(Plugin plugin, Listener... listeners) {
-		for (Listener listener : listeners) {
-			plugin.getServer().getPluginManager().registerEvents(listener, plugin);
-		}
-	}
 	
     @Override
     public void onEnable() {
@@ -25,7 +19,7 @@ public final class fcatMain extends JavaPlugin implements Listener {
     	getLogger().info("onEnable has been invoked!");
     	
     	// Event hooks
-    	registerEvents(this, new EventListener(this));
+    	this.getServer().getPluginManager().registerEvents(new EventListener(this), this);
     	
     	// Command hooks
     	this.getCommand("fcat").setExecutor(new CommandHandler(this));
@@ -45,5 +39,5 @@ public final class fcatMain extends JavaPlugin implements Listener {
     	getLogger().info("onDisable has been invoked!");
     	this.saveConfig();
     }
-
+    
 }

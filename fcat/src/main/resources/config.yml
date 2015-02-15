@@ -1,2 +1,4 @@
 explodechance: 0.01
 eggtype: CHICKEN
+explodematerial: SAND
+explosions: 0
