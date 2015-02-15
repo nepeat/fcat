@@ -20,12 +20,14 @@ public class CommandSetExplode extends CommandBase {
 	private static Material[] bannedmaterials = new Material[] {};
 
 	@Override
-	public void onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+	public void onCommand(CommandSender sender, Command cmd, String label,
+			String[] args) {
 		if (args.length != 1) {
-			sender.sendMessage(ChatColor.RED + "[fcat] Please check your arguments.");
+			sender.sendMessage(ChatColor.RED
+					+ "[fcat] Please check your arguments.");
 			String msg = ChatColor.YELLOW + "[fcat] Block Types: ";
 
-			for (Material mat : Material.values()){
+			for (Material mat : Material.values()) {
 				if (!(Arrays.asList(bannedmaterials).contains(mat))) {
 					msg += mat.name() + ", ";
 				}
@@ -57,13 +59,15 @@ public class CommandSetExplode extends CommandBase {
 		fcatMain.plugin.getConfig().set("explodematerial", arg);
 		fcatMain.plugin.saveConfig();
 
-		sender.sendMessage(ChatColor.GREEN + String.format("[fcat] Changed egg spawn type to %s!", arg));
+		sender.sendMessage(ChatColor.GREEN
+				+ String.format("[fcat] Changed egg spawn type to %s!", arg));
 
 		return;
 	}
 
 	@Override
-	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+	public List<String> onTabComplete(CommandSender sender, Command command,
+			String alias, String[] args) {
 		LinkedList<String> output = new LinkedList<String>();
 		String lastarg = "";
 
@@ -71,9 +75,10 @@ public class CommandSetExplode extends CommandBase {
 			lastarg = args[args.length - 1].toLowerCase();
 		}
 
-		for (Material mat : Material.values()){
+		for (Material mat : Material.values()) {
 			if (!(Arrays.asList(bannedmaterials).contains(mat))) {
-				if (mat.toString().toLowerCase().startsWith(lastarg)) output.add(mat.toString());
+				if (mat.toString().toLowerCase().startsWith(lastarg))
+					output.add(mat.toString());
 			}
 		}
 

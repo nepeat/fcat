@@ -18,7 +18,8 @@ public class CommandPurgeTNT extends CommandBase {
 	}
 
 	@Override
-	public void onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+	public void onCommand(CommandSender sender, Command cmd, String label,
+			String[] args) {
 		// World list
 		List<World> worlds = Bukkit.getServer().getWorlds();
 
@@ -34,13 +35,15 @@ public class CommandPurgeTNT extends CommandBase {
 				}
 			}
 		}
-		Bukkit.getServer().broadcastMessage(ChatColor.RED + String.format("Purged %s TNT!", purged));
+		Bukkit.getServer().broadcastMessage(
+				ChatColor.RED + String.format("Purged %s TNT!", purged));
 
 		return;
 	}
 
 	@Override
-	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+	public List<String> onTabComplete(CommandSender sender, Command command,
+			String alias, String[] args) {
 		return new LinkedList<String>();
 	}
 

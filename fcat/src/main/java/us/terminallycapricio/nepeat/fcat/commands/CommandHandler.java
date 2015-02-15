@@ -38,24 +38,28 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
 	// Parser
 
 	@Override
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+	public boolean onCommand(CommandSender sender, Command cmd, String label,
+			String[] args) {
 		if (args.length == 0) {
 			getExecutor("help").onCommand(sender, cmd, label, args);
 			return true;
 		}
 
 		if (commands.containsKey(args[0])) {
-			getExecutor(args[0]).onCommand(sender, cmd, label, Arrays.copyOfRange(args, 1, args.length));
+			getExecutor(args[0]).onCommand(sender, cmd, label,
+					Arrays.copyOfRange(args, 1, args.length));
 			return true;
 		} else {
-			sender.sendMessage(ChatColor.RED + "[fcat] Do /fcat help to see valid commands.");
+			sender.sendMessage(ChatColor.RED
+					+ "[fcat] Do /fcat help to see valid commands.");
 		}
 
 		return true;
 	}
 
 	@Override
-	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+	public List<String> onTabComplete(CommandSender sender, Command command,
+			String alias, String[] args) {
 		LinkedList<String> output = new LinkedList<String>();
 		String lastarg = "";
 
@@ -66,12 +70,14 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
 		// No args. Get all commands from the commands map.
 		if (args.length == 1) {
 			for (String cmd : commands.keySet()) {
-				if (cmd.toLowerCase().startsWith(lastarg)) output.add(cmd);
+				if (cmd.toLowerCase().startsWith(lastarg))
+					output.add(cmd);
 			}
 		} else {
 			// Getting commands from the command classes
 			if (commands.containsKey(args[0])) {
-				return getExecutor(args[0]).onTabComplete(sender, command, alias, Arrays.copyOfRange(args, 1, args.length));
+				return getExecutor(args[0]).onTabComplete(sender, command,
+						alias, Arrays.copyOfRange(args, 1, args.length));
 			}
 		}
 

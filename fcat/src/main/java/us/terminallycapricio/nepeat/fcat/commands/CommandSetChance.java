@@ -16,7 +16,8 @@ public class CommandSetChance extends CommandBase {
 	}
 
 	@Override
-	public void onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+	public void onCommand(CommandSender sender, Command cmd, String label,
+			String[] args) {
 		float floatchance;
 		try {
 			floatchance = Float.parseFloat(args[0]);
@@ -26,13 +27,15 @@ public class CommandSetChance extends CommandBase {
 		}
 		fcatMain.plugin.getConfig().set("explodechance", floatchance);
 		fcatMain.plugin.saveConfig();
-		sender.sendMessage(ChatColor.GREEN + String.format("[fcat] Set to %s!", floatchance));
+		sender.sendMessage(ChatColor.GREEN
+				+ String.format("[fcat] Set to %s!", floatchance));
 		return;
 
 	}
 
 	@Override
-	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+	public List<String> onTabComplete(CommandSender sender, Command command,
+			String alias, String[] args) {
 		return new LinkedList<String>();
 	}
 

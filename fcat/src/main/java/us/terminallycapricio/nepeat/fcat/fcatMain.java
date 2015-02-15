@@ -19,7 +19,8 @@ public final class fcatMain extends JavaPlugin implements Listener {
 		getLogger().info("onEnable has been invoked!");
 
 		// Event hooks
-		this.getServer().getPluginManager().registerEvents(new EventListener(this), this);
+		this.getServer().getPluginManager()
+				.registerEvents(new EventListener(this), this);
 
 		// Command hooks
 		this.getCommand("fcat").setExecutor(new CommandHandler(this));
