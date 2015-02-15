@@ -16,12 +16,12 @@ public class CommandPurgeTNT extends CommandBase {
 	public CommandPurgeTNT() {
 		this.desc = "Removes all TNT from the world.";
 	}
-	
+
 	@Override
 	public void onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-    	// World list
+		// World list
 		List<World> worlds = Bukkit.getServer().getWorlds();
-		
+
 		// Counter
 		int purged = 0;
 
@@ -35,13 +35,13 @@ public class CommandPurgeTNT extends CommandBase {
 			}
 		}
 		Bukkit.getServer().broadcastMessage(ChatColor.RED + String.format("Purged %s TNT!", purged));
-		
-		return;		
+
+		return;
 	}
-	
+
 	@Override
 	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
 		return new LinkedList<String>();
 	}
-	
+
 }

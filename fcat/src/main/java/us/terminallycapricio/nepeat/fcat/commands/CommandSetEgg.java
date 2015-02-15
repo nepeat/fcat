@@ -16,7 +16,7 @@ public class CommandSetEgg extends CommandBase {
 	public CommandSetEgg() {
 		this.desc = "Sets egg spawn type.";
 	}
-	
+
 	private static EntityType[] bannedentities = new EntityType[] {
 		EntityType.ENDER_DRAGON,
 		EntityType.ENDER_CRYSTAL,
@@ -27,13 +27,13 @@ public class CommandSetEgg extends CommandBase {
 		EntityType.ARMOR_STAND,
 		EntityType.COMPLEX_PART
 	};
-	
+
 	@Override
 	public void onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (args.length != 1) {
 			sender.sendMessage(ChatColor.RED + "[fcat] Please check your arguments.");
 			String msg = ChatColor.YELLOW + "[fcat] Mob Types: ";
-			
+
 			for (EntityType et : EntityType.values()){
 				if (et.isSpawnable() && !(Arrays.asList(bannedentities).contains(et))) {
 					msg += et.name() + ", ";
@@ -46,12 +46,12 @@ public class CommandSetEgg extends CommandBase {
 		changeEgg(sender, args[0]);
 		return;
 	}
-	
-    private void changeEgg(CommandSender sender, String arg) {
-    	
-    	// Fix casing for enum
-    	arg = arg.toUpperCase();
-    	
+
+	private void changeEgg(CommandSender sender, String arg) {
+
+		// Fix casing for enum
+		arg = arg.toUpperCase();
+
 		try {
 			EntityType eggtype = EntityType.valueOf(arg);
 			if (Arrays.asList(bannedentities).contains(eggtype)) {
@@ -61,7 +61,7 @@ public class CommandSetEgg extends CommandBase {
 			sender.sendMessage(ChatColor.RED + "[fcat] Invalid entity!");
 			return;
 		}
-		
+
 		// Config saving
 		fcatMain.plugin.getConfig().set("eggtype", arg);
 		fcatMain.plugin.saveConfig();
@@ -69,24 +69,24 @@ public class CommandSetEgg extends CommandBase {
 		sender.sendMessage(ChatColor.GREEN + String.format("[fcat] Changed egg spawn type to %s!", arg));
 
 		return;
-    }
-	
+	}
+
 	@Override
 	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
 		LinkedList<String> output = new LinkedList<String>();
 		String lastarg = "";
-		
-    	if (args.length > 0) {
-    		lastarg = args[args.length - 1].toLowerCase();
-    	}
-		
+
+		if (args.length > 0) {
+			lastarg = args[args.length - 1].toLowerCase();
+		}
+
 		for (EntityType et : EntityType.values()){
 			if (et.isSpawnable() && !(Arrays.asList(bannedentities).contains(et))) {
 				if (et.toString().toLowerCase().startsWith(lastarg)) output.add(et.toString());
 			}
 		}
-		
+
 		return output;
 	}
-    
+
 }

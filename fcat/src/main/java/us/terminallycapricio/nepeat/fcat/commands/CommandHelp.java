@@ -13,7 +13,7 @@ public class CommandHelp extends CommandBase {
 	public CommandHelp() {
 		this.desc = "This command";
 	}
-	
+
 	@Override
 	public void onCommand(CommandSender sender, Command cmd, String label,String[] args) {
 		sender.sendMessage(ChatColor.YELLOW + "fcat help");
