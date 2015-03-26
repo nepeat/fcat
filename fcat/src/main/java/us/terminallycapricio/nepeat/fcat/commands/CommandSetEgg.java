@@ -18,22 +18,24 @@ public class CommandSetEgg extends CommandBase {
 	}
 
 	private static EntityType[] bannedentities = new EntityType[] {
-			EntityType.ENDER_DRAGON, EntityType.ENDER_CRYSTAL,
-			EntityType.ENDER_PEARL, EntityType.ITEM_FRAME,
-			EntityType.ENDER_SIGNAL, EntityType.LEASH_HITCH,
-			EntityType.ARMOR_STAND, EntityType.COMPLEX_PART };
+		EntityType.ENDER_DRAGON,
+		EntityType.ENDER_CRYSTAL,
+		EntityType.ENDER_PEARL,
+		EntityType.ITEM_FRAME,
+		EntityType.ENDER_SIGNAL,
+		EntityType.LEASH_HITCH,
+		EntityType.ARMOR_STAND,
+		EntityType.COMPLEX_PART
+	};
 
 	@Override
-	public void onCommand(CommandSender sender, Command cmd, String label,
-			String[] args) {
+	public void onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (args.length != 1) {
-			sender.sendMessage(ChatColor.RED
-					+ "[fcat] Please check your arguments.");
+			sender.sendMessage(ChatColor.RED + "[fcat] Please check your arguments.");
 			String msg = ChatColor.YELLOW + "[fcat] Mob Types: ";
 
-			for (EntityType et : EntityType.values()) {
-				if (et.isSpawnable()
-						&& !(Arrays.asList(bannedentities).contains(et))) {
+			for (EntityType et : EntityType.values()){
+				if (et.isSpawnable() && !(Arrays.asList(bannedentities).contains(et))) {
 					msg += et.name() + ", ";
 				}
 			}
@@ -64,15 +66,13 @@ public class CommandSetEgg extends CommandBase {
 		fcatMain.plugin.getConfig().set("eggtype", arg);
 		fcatMain.plugin.saveConfig();
 
-		sender.sendMessage(ChatColor.GREEN
-				+ String.format("[fcat] Changed egg spawn type to %s!", arg));
+		sender.sendMessage(ChatColor.GREEN + String.format("[fcat] Changed egg spawn type to %s!", arg));
 
 		return;
 	}
 
 	@Override
-	public List<String> onTabComplete(CommandSender sender, Command command,
-			String alias, String[] args) {
+	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
 		LinkedList<String> output = new LinkedList<String>();
 		String lastarg = "";
 
@@ -80,11 +80,9 @@ public class CommandSetEgg extends CommandBase {
 			lastarg = args[args.length - 1].toLowerCase();
 		}
 
-		for (EntityType et : EntityType.values()) {
-			if (et.isSpawnable()
-					&& !(Arrays.asList(bannedentities).contains(et))) {
-				if (et.toString().toLowerCase().startsWith(lastarg))
-					output.add(et.toString());
+		for (EntityType et : EntityType.values()){
+			if (et.isSpawnable() && !(Arrays.asList(bannedentities).contains(et))) {
+				if (et.toString().toLowerCase().startsWith(lastarg)) output.add(et.toString());
 			}
 		}
 

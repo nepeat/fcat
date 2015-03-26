@@ -15,20 +15,16 @@ public class CommandHelp extends CommandBase {
 	}
 
 	@Override
-	public void onCommand(CommandSender sender, Command cmd, String label,
-			String[] args) {
+	public void onCommand(CommandSender sender, Command cmd, String label,String[] args) {
 		sender.sendMessage(ChatColor.YELLOW + "fcat help");
 		sender.sendMessage(ChatColor.YELLOW + "---------");
 		for (Entry<String, CommandBase> x : CommandHandler.commands.entrySet()) {
-			sender.sendMessage(ChatColor.GREEN + "/fcat "
-					+ ChatColor.DARK_GREEN + x.getKey() + ChatColor.WHITE
-					+ " - " + x.getValue().desc);
+			sender.sendMessage(ChatColor.GREEN + "/fcat " + ChatColor.DARK_GREEN  + x.getKey() + ChatColor.WHITE + " - "+ x.getValue().desc);
 		}
 	}
 
 	@Override
-	public List<String> onTabComplete(CommandSender sender, Command command,
-			String alias, String[] args) {
+	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
 		return new LinkedList<String>();
 	}
 

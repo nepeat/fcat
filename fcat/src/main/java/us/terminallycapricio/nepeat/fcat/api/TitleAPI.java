@@ -25,12 +25,10 @@ public class TitleAPI {
 
 		// Create title packet
 		IChatBaseComponent chatTitle = ChatSerializer.a(json.toString());
-		PacketPlayOutTitle title = new PacketPlayOutTitle(
-				EnumTitleAction.TITLE, chatTitle);
+		PacketPlayOutTitle title = new PacketPlayOutTitle(EnumTitleAction.TITLE, chatTitle);
 
 		// Send title packet
-		((CraftPlayer) player.getPlayer()).getHandle().playerConnection
-				.sendPacket(title);
+		((CraftPlayer) player.getPlayer()).getHandle().playerConnection.sendPacket(title);
 	}
 
 }
