@@ -19,6 +19,7 @@ public class CommandInfo extends CommandBase {
 		// TODO Auto-generated method stub
 		sender.sendMessage("[fcat] Explosion chance: " + fcatMain.plugin.getConfig().get("explodechance"));
 		sender.sendMessage("[fcat] Egg type: " + fcatMain.plugin.getConfig().get("eggtype"));
+		sender.sendMessage("[fcat] Block type: " + fcatMain.plugin.getConfig().getString("explodematerial"));
 	}
 
 	@Override
