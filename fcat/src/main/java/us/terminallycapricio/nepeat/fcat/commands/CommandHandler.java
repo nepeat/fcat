@@ -28,7 +28,7 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
 
 		// Initiate commands
 		commands.put("help", new CommandHelp());
-		commands.put("killtnt", new CommandPurgeTNT());
+		commands.put("butcher", new CommandButcher());
 		commands.put("info", new CommandInfo());
 		commands.put("setegg", new CommandSetEgg());
 		commands.put("setchance", new CommandSetChance());

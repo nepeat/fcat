@@ -9,12 +9,16 @@ import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Monster;
 import org.bukkit.entity.TNTPrimed;
 
-public class CommandPurgeTNT extends CommandBase {
+import us.terminallycapricio.nepeat.fcat.fcatMain;
 
-	public CommandPurgeTNT() {
-		this.desc = "Removes all TNT from the world.";
+public class CommandButcher extends CommandBase {
+
+	public CommandButcher() {
+		this.desc = "Removes most entities from the world.";
 	}
 
 	@Override
@@ -25,16 +29,19 @@ public class CommandPurgeTNT extends CommandBase {
 		// Counter
 		int purged = 0;
 
+		// Egg entity
+		EntityType eggentity = EntityType.valueOf(fcatMain.plugin.getConfig().getString("eggtype"));
+		
 		for (World world : worlds) {
 			List<Entity> entities = world.getEntities();
 			for (Entity entity : entities) {
-				if (entity instanceof TNTPrimed) {
+				if (entity instanceof TNTPrimed || entity instanceof Monster || entity.getType() == eggentity) {
 					entity.remove();
 					purged += 1;
 				}
 			}
 		}
-		Bukkit.getServer().broadcastMessage(ChatColor.RED + String.format("Purged %s TNT!", purged));
+		Bukkit.getServer().broadcastMessage(ChatColor.RED + String.format("[fcat] %s purged from all worlds.", purged));
 
 		return;
 	}
