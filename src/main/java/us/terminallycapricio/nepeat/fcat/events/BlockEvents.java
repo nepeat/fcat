@@ -14,7 +14,6 @@ import org.bukkit.event.block.BlockFadeEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 
 import us.terminallycapricio.nepeat.fcat.fcatMain;
-import us.terminallycapricio.nepeat.fcat.api.TitleAPI;
 
 public class BlockEvents implements Listener {
 	
@@ -79,12 +78,6 @@ public class BlockEvents implements Listener {
 			}
 			block.setType(randomblocks[r.nextInt(randomblocks.length)]);
 		}
-
-		// Title
-		int explosions = this.plugin.getConfig().getInt("explosions");
-		TitleAPI.broadcastTitle(String.format("%d explosions!", explosions));
-		fcatMain.plugin.getConfig().set("explosions", explosions + 1);
-		fcatMain.plugin.saveConfig();
 	}
 	
 	@EventHandler
